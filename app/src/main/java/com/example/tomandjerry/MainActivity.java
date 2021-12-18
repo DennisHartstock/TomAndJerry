@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView tomImageView;
     ImageView jerryImageView;
+    boolean isTomVisible = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,14 @@ public class MainActivity extends AppCompatActivity {
         tomImageView = findViewById(R.id.tomImageView);
         jerryImageView = findViewById(R.id.jerryImageView);
 
-        if (tomImageView.getAlpha() == 1) {
-            tomImageView.animate().alpha(0).setDuration(3000);
-            jerryImageView.animate().alpha(1).setDuration(3000);
+        if (isTomVisible) {
+            tomImageView.animate().rotation(3600).alpha(0).scaleX(0).scaleY(0).setDuration(3000);
+            jerryImageView.animate().rotation(-3600).alpha(1).scaleX(1).scaleY(1).setDuration(3000);
+            isTomVisible = false;
         } else {
-            jerryImageView.animate().alpha(0).setDuration(3000);
-            tomImageView.animate().alpha(1).setDuration(3000);
+            jerryImageView.animate().rotation(3600).alpha(0).scaleX(0).scaleY(0).setDuration(3000);
+            tomImageView.animate().rotation(-3600).alpha(1).scaleX(1).scaleY(1).setDuration(3000);
+            isTomVisible = true;
         }
     }
 }
